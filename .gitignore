@@ -1,0 +1,52 @@
+# Build directories
+build/
+out/
+cmake-build-*/
+CMakeFiles/
+
+# CMake generated files
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+install_manifest.txt
+Makefile
+
+# Visual Studio / MSBuild generated files
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.user
+*.suo
+*.opensdf
+*.sdf
+*.ipch
+*.tlog
+
+# Compiled binaries and debug symbols
+*.exe
+*.dll
+*.lib
+*.obj
+*.pdb
+*.ilk
+*.exp
+
+# FetchContent / dependency build output
+_deps/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.cache
+*.bak
+*.swp
+~$*
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

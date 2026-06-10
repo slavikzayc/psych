@@ -1,0 +1,17 @@
+{
+  "starting_map_id": 1,
+  "shift_duration_seconds": 900,
+  "time_scale": 2.0,
+  "stat_allocation": {
+    "start_authority": 1,
+    "start_medication": 1,
+    "free_points": 8,
+    "max_stat": 10
+  },
+  "sanity": {
+    "initial": 100,
+    "max": 100,
+    "passive_drain_per_minute": 3,
+    "passive_drain_interval_seconds": 12
+  }
+}

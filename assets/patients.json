@@ -1,0 +1,29 @@
+[
+  {
+    "id": 101,
+    "name": "Анна Орлова",
+    "archetype": "тревожное состояние",
+    "max_tension": 24,
+    "resistance": 4,
+    "dialogue_id": 201,
+    "dialogue_cooldown_seconds": 120
+  },
+  {
+    "id": 102,
+    "name": "Виктор Серов",
+    "archetype": "агрессивное состояние",
+    "max_tension": 32,
+    "resistance": 7,
+    "dialogue_id": 202,
+    "dialogue_cooldown_seconds": 150
+  },
+  {
+    "id": 103,
+    "name": "Мария Белова",
+    "archetype": "депрессивное состояние",
+    "max_tension": 28,
+    "resistance": 5,
+    "dialogue_id": 203,
+    "dialogue_cooldown_seconds": 135
+  }
+]

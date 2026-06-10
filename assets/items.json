@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Слабое успокоительное",
+    "type": "medicine",
+    "description": "Небольшая доза возвращает дыхание в ровный ритм.",
+    "sanity_restore": 12,
+    "dialogue_bonus": 2,
+    "consumable": true
+  },
+  {
+    "id": 2,
+    "name": "Сильное успокоительное",
+    "type": "medicine",
+    "description": "Ампула для тяжёлых случаев. Помогает врачу удержать контроль.",
+    "sanity_restore": 25,
+    "dialogue_bonus": 5,
+    "consumable": true
+  },
+  {
+    "id": 3,
+    "name": "Записка врача",
+    "type": "document",
+    "description": "Доктор Ильин: не спорьте с пациентами ночью. Сначала признавайте страх, потом задавайте короткие вопросы.",
+    "sanity_restore": 0,
+    "dialogue_bonus": 0,
+    "consumable": false
+  },
+  {
+    "id": 4,
+    "name": "Ключ от склада",
+    "type": "key",
+    "description": "Тяжёлый ключ с биркой 'склад'.",
+    "sanity_restore": 0,
+    "dialogue_bonus": 0,
+    "consumable": false
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "phase": "Middle",
+    "trigger_time": 300,
+    "event_type": "activate_patient",
+    "target_id": 102,
+    "message": "Из дальней палаты слышится удар в дверь."
+  },
+  {
+    "id": 2,
+    "phase": "Middle",
+    "trigger_time": 520,
+    "event_type": "show_message",
+    "target_id": 0,
+    "message": "Дежурный телефон звонит один раз и замолкает."
+  },
+  {
+    "id": 3,
+    "phase": "Final",
+    "trigger_time": 700,
+    "event_type": "increase_sanity_drain",
+    "target_id": 2,
+    "message": "Свет начинает мерцать. Сосредоточиться становится труднее."
+  }
+]

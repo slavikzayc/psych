@@ -1,0 +1,242 @@
+{
+  "dialogues": [
+    {
+      "id": 201,
+      "start_node_id": 2011,
+      "success_text": "Анна садится на кровать и наконец делает спокойный вдох.",
+      "fail_text": "Паника Анны заражает весь коридор."
+    },
+    {
+      "id": 202,
+      "start_node_id": 2021,
+      "success_text": "Виктор опускает плечи и отступает от двери.",
+      "fail_text": "Виктор срывается на крик."
+    },
+    {
+      "id": 203,
+      "start_node_id": 2031,
+      "success_text": "Мария впервые за ночь отвечает полным предложением.",
+      "fail_text": "Мария закрывается и перестаёт реагировать."
+    }
+  ],
+  "nodes": [
+    {
+      "id": 2011,
+      "dialogue_id": 201,
+      "patient_text": "Они идут по потолку. Вы тоже слышите?",
+      "state_hint": "Пациентка мечется взглядом и сжимает край халата."
+    },
+    {
+      "id": 2012,
+      "dialogue_id": 201,
+      "patient_text": "Если я закрою глаза, они станут ближе.",
+      "state_hint": "Дыхание сбивчивое, но она уже слушает голос врача."
+    },
+    {
+      "id": 2021,
+      "dialogue_id": 202,
+      "patient_text": "Не подходите. Я знаю, зачем вас прислали.",
+      "state_hint": "Пациент стоит у стены, кулаки сжаты."
+    },
+    {
+      "id": 2022,
+      "dialogue_id": 202,
+      "patient_text": "Вы все обещаете одно, а делаете другое.",
+      "state_hint": "Гнев держится, но в голосе появляется усталость."
+    },
+    {
+      "id": 2031,
+      "dialogue_id": 203,
+      "patient_text": "Оставьте свет выключенным. Так честнее.",
+      "state_hint": "Пациентка почти не двигается и говорит в пол."
+    },
+    {
+      "id": 2032,
+      "dialogue_id": 203,
+      "patient_text": "Мне всё равно, что будет утром.",
+      "state_hint": "Ответы короткие, но контакт ещё возможен."
+    }
+  ],
+  "replies": [
+    {
+      "id": 1,
+      "node_id": 2011,
+      "text": "Я рядом. Давайте назовём три вещи, которые вы видите на стене.",
+      "base_impact": 7,
+      "min_authority": 1,
+      "min_medication": 1,
+      "authority_scale": 1,
+      "medication_scale": 1,
+      "fail_sanity_damage": 2,
+      "nextnode_id": 2012
+    },
+    {
+      "id": 2,
+      "node_id": 2011,
+      "text": "Сделайте вдох на четыре счёта. Я буду считать вместе с вами.",
+      "base_impact": 5,
+      "min_authority": 2,
+      "min_medication": 3,
+      "authority_scale": 0,
+      "medication_scale": 2,
+      "fail_sanity_damage": 3,
+      "nextnode_id": 2012
+    },
+    {
+      "id": 3,
+      "node_id": 2011,
+      "text": "Хватит. Здесь ничего нет.",
+      "base_impact": -2,
+      "min_authority": 5,
+      "min_medication": 1,
+      "authority_scale": 1,
+      "medication_scale": 0,
+      "fail_sanity_damage": 8,
+      "nextnode_id": 2012
+    },
+    {
+      "id": 4,
+      "node_id": 2012,
+      "text": "Не закрывайте глаза. Следите за моей рукой и дыханием.",
+      "base_impact": 9,
+      "min_authority": 2,
+      "min_medication": 2,
+      "authority_scale": 1,
+      "medication_scale": 1,
+      "fail_sanity_damage": 3,
+      "nextnode_id": 2012
+    },
+    {
+      "id": 5,
+      "node_id": 2012,
+      "text": "Я дам лекарство, если вы останетесь на месте.",
+      "base_impact": 6,
+      "min_authority": 1,
+      "min_medication": 4,
+      "authority_scale": 0,
+      "medication_scale": 2,
+      "fail_sanity_damage": 4,
+      "nextnode_id": 2012
+    },
+    {
+      "id": 6,
+      "node_id": 2021,
+      "text": "Я не буду подходить. Скажите, что вы хотите защитить.",
+      "base_impact": 8,
+      "min_authority": 3,
+      "min_medication": 1,
+      "authority_scale": 2,
+      "medication_scale": 0,
+      "fail_sanity_damage": 4,
+      "nextnode_id": 2022
+    },
+    {
+      "id": 7,
+      "node_id": 2021,
+      "text": "Виктор, посмотрите на мои руки. В них ничего нет.",
+      "base_impact": 7,
+      "min_authority": 2,
+      "min_medication": 2,
+      "authority_scale": 1,
+      "medication_scale": 1,
+      "fail_sanity_damage": 3,
+      "nextnode_id": 2022
+    },
+    {
+      "id": 8,
+      "node_id": 2021,
+      "text": "Сядьте немедленно. Это приказ.",
+      "base_impact": 3,
+      "min_authority": 7,
+      "min_medication": 1,
+      "authority_scale": 2,
+      "medication_scale": 0,
+      "fail_sanity_damage": 9,
+      "nextnode_id": 2022
+    },
+    {
+      "id": 9,
+      "node_id": 2022,
+      "text": "Вы правы злиться. Сейчас нам нужно просто снизить риск.",
+      "base_impact": 10,
+      "min_authority": 4,
+      "min_medication": 1,
+      "authority_scale": 2,
+      "medication_scale": 0,
+      "fail_sanity_damage": 4,
+      "nextnode_id": 2022
+    },
+    {
+      "id": 10,
+      "node_id": 2022,
+      "text": "Я могу предложить лекарство, но решение останется за вами.",
+      "base_impact": 6,
+      "min_authority": 2,
+      "min_medication": 5,
+      "authority_scale": 1,
+      "medication_scale": 2,
+      "fail_sanity_damage": 5,
+      "nextnode_id": 2022
+    },
+    {
+      "id": 11,
+      "node_id": 2031,
+      "text": "Я не буду включать свет. Просто посижу рядом минуту.",
+      "base_impact": 7,
+      "min_authority": 1,
+      "min_medication": 1,
+      "authority_scale": 1,
+      "medication_scale": 1,
+      "fail_sanity_damage": 2,
+      "nextnode_id": 2032
+    },
+    {
+      "id": 12,
+      "node_id": 2031,
+      "text": "Утро не обязано быть хорошим. Достаточно, чтобы оно наступило.",
+      "base_impact": 8,
+      "min_authority": 3,
+      "min_medication": 1,
+      "authority_scale": 2,
+      "medication_scale": 0,
+      "fail_sanity_damage": 4,
+      "nextnode_id": 2032
+    },
+    {
+      "id": 13,
+      "node_id": 2031,
+      "text": "Я подберу дозу, которая поможет пережить ближайший час.",
+      "base_impact": 6,
+      "min_authority": 1,
+      "min_medication": 5,
+      "authority_scale": 0,
+      "medication_scale": 2,
+      "fail_sanity_damage": 4,
+      "nextnode_id": 2032
+    },
+    {
+      "id": 14,
+      "node_id": 2032,
+      "text": "Тогда договоримся только о ближайших десяти минутах.",
+      "base_impact": 10,
+      "min_authority": 2,
+      "min_medication": 1,
+      "authority_scale": 2,
+      "medication_scale": 0,
+      "fail_sanity_damage": 3,
+      "nextnode_id": 2032
+    },
+    {
+      "id": 15,
+      "node_id": 2032,
+      "text": "Я слышу вас. И всё равно останусь рядом.",
+      "base_impact": 8,
+      "min_authority": 1,
+      "min_medication": 2,
+      "authority_scale": 1,
+      "medication_scale": 1,
+      "fail_sanity_damage": 2,
+      "nextnode_id": 2032
+    }
+  ]
+}
