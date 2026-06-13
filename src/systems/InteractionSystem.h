@@ -4,11 +4,12 @@
 #include "game/WorldState.h"
 #include "systems/InventorySystem.h"
 
-class InteractionSystem {
- public:
-  void Interact(WorldState& world, const GameDatabase& db, InventorySystem& inventory);
-  std::string GetPrompt(const WorldState& world) const;
+namespace interaction_system {
 
- private:
-  Entity FindInteractable(const WorldState& world) const;
-};
+// Выполняет действие F: подбор предмета, дверь, диалог, контейнер или документ.
+void Interact(WorldState &world, const GameDatabase &db);
+
+// Возвращает текст подсказки для ближайшего интерактивного объекта.
+std::string GetPrompt(const WorldState &world);
+
+} // namespace interaction_system

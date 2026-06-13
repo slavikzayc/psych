@@ -5,8 +5,9 @@
 #include "systems/CollisionSystem.h"
 #include "systems/InputSystem.h"
 
-class MovementSystem {
- public:
-  void Update(WorldState& world, const GameDatabase& db, const CollisionSystem& collision,
-              InputCommand command);
-};
+namespace movement_system {
+
+// Выполняет перемещение игрока на одну клетку по команде направления.
+void Update(WorldState &world, const GameDatabase &db, InputCommand command);
+
+} // namespace movement_system

@@ -2,9 +2,9 @@
 
 #include "game/WorldState.h"
 
-class PatientSystem {
- public:
-  void Update(WorldState& world, float dt);
- private:
-  float time_accumulator_ = 0.0f;
-};
+namespace patient_system {
+
+// Отсчитывает cooldown стабилизированных пациентов и возвращает их к разговору.
+void Update(WorldState &world, float dt, float &time_accumulator);
+
+} // namespace patient_system

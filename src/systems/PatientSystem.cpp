@@ -1,25 +1,32 @@
 #include "systems/PatientSystem.h"
 
-void PatientSystem::Update(WorldState& world, float dt) {
-  if (world.mode != GameMode::Exploration && world.mode != GameMode::Inventory &&
+void patient_system::Update(WorldState &world, float dt,
+                            float &time_accumulator) {
+  // Пациенты обновляются только во время активной игры.
+  if (world.mode != GameMode::Exploration &&
+      world.mode != GameMode::Inventory &&
       world.mode != GameMode::DialogueCombat) {
     return;
   }
 
-  time_accumulator_ += dt;
-  const int elapsed = static_cast<int>(time_accumulator_);
+  // Накопитель переводит дробный dt в целые секунды.
+  time_accumulator += dt;
+  const int elapsed = static_cast<int>(time_accumulator);
   if (elapsed <= 0) {
     return;
   }
-  time_accumulator_ -= static_cast<float>(elapsed);
+  time_accumulator -= static_cast<float>(elapsed);
 
-  for (auto& [entity, patient] : world.registry.patients) {
-    if (patient.state != PatientState::Treated || patient.relapse_timer_seconds <= 0) {
+  for (auto &[entity, patient] : world.registry.patients) {
+    // Нас интересуют только стабилизированные пациенты с активным таймером.
+    if (patient.state != PatientState::Treated ||
+        patient.relapse_timer_seconds <= 0) {
       continue;
     }
 
     patient.relapse_timer_seconds -= elapsed;
     if (patient.relapse_timer_seconds <= 0) {
+      // Таймер закончился: пациент снова доступен для разговора.
       patient.state = PatientState::Calm;
       patient.current_tension = patient.max_tension;
       world.registry.renderables[entity].symbol = 'p';
