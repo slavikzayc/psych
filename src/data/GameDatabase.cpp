@@ -175,7 +175,7 @@ bool GameDatabase::LoadAll(const std::string& assets_path) {
       spawn.target_x = spawn_value.value("target_x", 0);
       spawn.target_y = spawn_value.value("target_y", 0);
       spawn.locked = spawn_value.value("locked", false);
-      spawn.required_key_item_id = spawn_value.value("required_key_item_id", spawn.data_id);
+      spawn.required_key_item_id = spawn_value.value("required_key_item_id", spawn.data_id);;
       spawn.prompt_text = spawn_value.value("prompt_text", "");
       spawn.empty_prompt_text = spawn_value.value("empty_prompt_text", "");
       spawn_points.push_back(spawn);

@@ -91,7 +91,7 @@
     "map_id": 2,
     "entity_type": "patient",
     "data_id": 102,
-    "x": 30,
+    "x": 31,
     "y": 10,
     "prompt_text": "поговорить с Виктором"
   },
@@ -158,7 +158,7 @@
     "map_id": 4,
     "entity_type": "patient",
     "data_id": 103,
-    "x": 23,
+    "x": 24,
     "y": 5,
     "prompt_text": "поговорить с Марией"
   },
@@ -168,7 +168,7 @@
     "entity_type": "item",
     "data_id": 4,
     "x": 9,
-    "y": 11,
+    "y": 13,
     "prompt_text": "подобрать ключ"
   },
   {

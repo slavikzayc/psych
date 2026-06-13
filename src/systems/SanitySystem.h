@@ -6,7 +6,7 @@ class SanitySystem {
  public:
   void ChangeSanity(WorldState& world, int amount);
   void UpdateSanity(WorldState& world, float dt);
-
- private:
+ 
+private:
   float drain_accumulator_ = 0.0f;
 };

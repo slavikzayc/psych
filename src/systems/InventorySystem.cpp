@@ -60,6 +60,11 @@ void InventorySystem::UseItem(WorldState& world, const GameDatabase& db, Entity 
     SanitySystem sanity;
     sanity.ChangeSanity(world, item.sanity_restore);
     world.message = "Вы используете: " + item.name + ".";
+    if (item.dialogue_bonus > 0 &&
+        !(world.inventory_return_mode == GameMode::DialogueCombat)) {
+        world.message += " Диалоговый эффект предмета потерян.";
+    }
+    world.message = world.message;
     used = true;
   }
 
@@ -83,4 +88,7 @@ void InventorySystem::UseItem(WorldState& world, const GameDatabase& db, Entity 
   if (item.consumable) {
     RemoveItem(world, owner, item_id, 1);
   }
+
+
 }
+

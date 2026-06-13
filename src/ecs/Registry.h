@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 #include "ecs/Components.h"
@@ -10,7 +11,7 @@
 struct Registry {
   Entity next_entity = 1;
 
-  std::vector<Entity> alive_entities;
+  std::unordered_set<Entity> alive_entities;
 
   std::unordered_map<Entity, PositionComponent> positions;
   std::unordered_map<Entity, MapComponent> maps;
@@ -29,19 +30,17 @@ struct Registry {
 
 inline Entity CreateEntity(Registry& registry) {
   const Entity entity = registry.next_entity++;
-  registry.alive_entities.push_back(entity);
+  registry.alive_entities.insert(entity);
   return entity;
 }
 
 inline bool IsAlive(const Registry& registry, Entity entity) {
-  return std::find(registry.alive_entities.begin(), registry.alive_entities.end(), entity) !=
-         registry.alive_entities.end();
+    return registry.alive_entities.count(entity) > 0;
 }
 
+
 inline void DestroyEntity(Registry& registry, Entity entity) {
-  registry.alive_entities.erase(
-      std::remove(registry.alive_entities.begin(), registry.alive_entities.end(), entity),
-      registry.alive_entities.end());
+  registry.alive_entities.erase(entity);
 
   registry.positions.erase(entity);
   registry.maps.erase(entity);

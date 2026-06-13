@@ -99,9 +99,18 @@ void DialogueCombatSystem::HandleInput(WorldState& world, const GameDatabase& db
   combat.pending_item_bonus = 0;
 
   patient.current_tension -= impact;
-  if (impact <= 0 && reply.fail_sanity_damage > 0) {
-    SanitySystem sanity;
-    sanity.ChangeSanity(world, -reply.fail_sanity_damage);
+  
+  if (reply.fail_sanity_damage > 0) {
+      SanitySystem sanity;
+      if (impact <= 0) {
+          // Реплика полностью заблокирована — полный штраф
+          sanity.ChangeSanity(world, -reply.fail_sanity_damage);
+      }
+      else if (impact < reply.base_impact) {
+          // Реплика ослаблена сопротивлением — частичный штраф
+          sanity.ChangeSanity(world, -(reply.fail_sanity_damage / 2));
+      }
+      // Иначе impact >= base_impact — реплика сработала полностью, штрафа нет
   }
 
   if (world.mode == GameMode::Defeat) {
@@ -129,10 +138,6 @@ void DialogueCombatSystem::HandleInput(WorldState& world, const GameDatabase& db
     combat.current_node_id = reply.next_node_id;
   }
 
-  if (reply.fail_sanity_damage > 0 && impact < reply.base_impact) {
-    SanitySystem sanity;
-    sanity.ChangeSanity(world, -(reply.fail_sanity_damage / 2));
-  }
 
   world.message =
       impact > 0

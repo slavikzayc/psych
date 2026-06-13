@@ -11,46 +11,36 @@ bool SameCell(const PositionComponent& a, const PositionComponent& b) {
 }  
 
 Entity InteractionSystem::FindInteractable(const WorldState& world) const {
-  const auto player_position_it = world.registry.positions.find(world.player);
-  if (player_position_it == world.registry.positions.end()) {
+    const auto player_pos_it = world.registry.positions.find(world.player);
+    if (player_pos_it == world.registry.positions.end()) return 0;
+    const PositionComponent& pp = player_pos_it->second;
+
+    constexpr std::array<PositionComponent, 5> cells = { {{0,0},{0,-1},{0,1},{-1,0},{1,0}} };
+
+    for (const PositionComponent& offset : cells) {
+        const int x = pp.x + offset.x;
+        const int y = pp.y + offset.y;
+
+        for (const auto& [entity, interactable] : world.registry.interactables) {
+            const auto map_it = world.registry.maps.find(entity);
+            if (map_it != world.registry.maps.end() &&
+                map_it->second.map_id != world.currentmap_id) continue;
+
+            const auto pos_it = world.registry.positions.find(entity);
+            if (pos_it == world.registry.positions.end()) continue;
+            if (pos_it->second.x != x || pos_it->second.y != y) continue;
+
+            // Pickup — только на клетке игрока (offset == {0,0})
+            if (interactable.type == InteractionType::Pickup && offset.x == 0 && offset.y == 0) {
+                return entity;
+            }
+            // Остальные типы — только в соседних клетках
+            if (interactable.type != InteractionType::Pickup && (offset.x != 0 || offset.y != 0)) {
+                return entity;
+            }
+        }
+    }
     return 0;
-  }
-
-  const PositionComponent player_position = player_position_it->second;
-
-  for (const auto& [entity, interactable] : world.registry.interactables) {
-    const auto map_it = world.registry.maps.find(entity);
-    if (map_it != world.registry.maps.end() && map_it->second.map_id != world.currentmap_id) {
-      continue;
-    }
-    if (interactable.type != InteractionType::Pickup) {
-      continue;
-    }
-    const auto pos_it = world.registry.positions.find(entity);
-    if (pos_it != world.registry.positions.end() && SameCell(player_position, pos_it->second)) {
-      return entity;
-    }
-  }
-
-  constexpr std::array<PositionComponent, 4> offsets = {{{0, -1}, {0, 1}, {-1, 0}, {1, 0}}};
-  for (const PositionComponent& offset : offsets) {
-    const int x = player_position.x + offset.x;
-    const int y = player_position.y + offset.y;
-    for (const auto& [entity, interactable] : world.registry.interactables) {
-      (void)interactable;
-      const auto map_it = world.registry.maps.find(entity);
-      if (map_it != world.registry.maps.end() && map_it->second.map_id != world.currentmap_id) {
-        continue;
-      }
-      const auto pos_it = world.registry.positions.find(entity);
-      if (pos_it != world.registry.positions.end() && pos_it->second.x == x &&
-          pos_it->second.y == y) {
-        return entity;
-      }
-    }
-  }
-
-  return 0;
 }
 
 void InteractionSystem::Interact(WorldState& world, const GameDatabase& db,
