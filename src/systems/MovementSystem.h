@@ -7,7 +7,6 @@
 
 namespace movement_system {
 
-// Выполняет перемещение игрока на одну клетку по команде направления.
 void Update(WorldState &world, const GameDatabase &db, InputCommand command);
 
-} // namespace movement_system
+}

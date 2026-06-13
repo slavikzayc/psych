@@ -8,11 +8,9 @@
 
 namespace render_system {
 
-// Рисует карту, сущности поверх карты и HUD.
 std::string RenderExploration(const WorldState &world, const GameDatabase &db,
                               const std::string &prompt);
 
-// Остальные функции собирают отдельные экраны игры.
 std::string RenderMainMenu(int selected);
 std::string RenderStatAllocation(int authority, int medication, int points,
                                  int selected);
@@ -22,4 +20,4 @@ std::string RenderDialogue(const WorldState &world, const GameDatabase &db);
 std::string RenderVictory(const WorldState &world);
 std::string RenderDefeat(const WorldState &world);
 
-} // namespace render_system
+}
