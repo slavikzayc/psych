@@ -19,7 +19,7 @@
 
 class Game {
  public:
-  int Run();
+  void Run();
 
  private:
   void Render();

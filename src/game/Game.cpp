@@ -41,7 +41,7 @@ char SymbolForItemType(const std::string &type) {
 
 }
 
-int Game::Run() {
+void Game::Run() {
   SetConsoleOutputCP(CP_UTF8);
   SetConsoleCP(CP_UTF8);
   HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -55,7 +55,7 @@ int Game::Run() {
 
   if (!db_.LoadAll("assets")) {
     std::cout << "Data load error: " << db_.last_error << "\n\x1B[?25h";
-    return 1;
+    return;
   }
   ResetToMenu();
 
@@ -84,7 +84,6 @@ int Game::Run() {
   }
 
   std::cout << "\x1B[2J\x1B[HGame ended.\n\x1B[?25h" << std::flush;
-  return 0;
 }
 
 void Game::Render() {
